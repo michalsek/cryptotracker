@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Image, StyleSheet } from 'react-native';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { SvgXml } from 'react-native-svg';
 
 import { getCurrencyIcon } from '../../utilities/assetHelper';
@@ -18,18 +18,20 @@ const CoinSummaryItem: React.FC<CoinSummaryItemProps> = (props) => {
   const market = Markets[asset.marketId];
 
   return (
-    <View style={styles.container}>
-      <SvgXml style={styles.icon} xml={getCurrencyIcon(asset.currency)} />
-      <View style={styles.main}>
-        <StyledText>{currency.name}</StyledText>
-        <StyledText>{market.name}</StyledText>
+    <TouchableOpacity onPress={onPress}>
+      <View style={styles.container}>
+        <SvgXml style={styles.icon} xml={getCurrencyIcon(asset.currency)} />
+        <View style={styles.main}>
+          <StyledText>{currency.name}</StyledText>
+          <StyledText>{market.name}</StyledText>
+        </View>
+        <View style={styles.amountWrapper}>
+          <StyledText>{asset.amount}</StyledText>
+          <StyledText>{currency.type}</StyledText>
+        </View>
+        {!!onPress && <StyledText style={styles.arrow}>{'>'}</StyledText>}
       </View>
-      <View>
-        <StyledText>
-          {asset.amount} ({currency.type})
-        </StyledText>
-      </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -53,5 +55,12 @@ const styles = StyleSheet.create({
     borderWidth: StyleSheet.hairlineWidth,
     borderRadius: 32 / 2,
     marginRight: 10,
+  },
+  amountWrapper: {
+    alignItems: 'flex-end',
+  },
+  arrow: {
+    marginLeft: 10,
+    fontSize: 20,
   },
 });

@@ -16,19 +16,16 @@ export default function DashboardScreen({
   }
 
   function renderAsset(params: { item: Asset }) {
-    return <AssetSummaryItem asset={params.item} />;
+    return <AssetSummaryItem asset={params.item} onPress={() => {}} />;
   }
 
   return (
-    <Screen>
-      <StyledText>Dashboard</StyledText>
-      <FlatList
-        data={assets}
-        renderItem={renderAsset}
-        keyExtractor={keyExtractor}
-        contentContainerStyle={styles.list}
-      />
-    </Screen>
+    <FlatList
+      data={assets}
+      renderItem={renderAsset}
+      keyExtractor={keyExtractor}
+      contentContainerStyle={styles.list}
+    />
   );
 }
 
