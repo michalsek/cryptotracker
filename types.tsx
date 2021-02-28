@@ -1,17 +1,34 @@
 export type RootStackParamList = {
-  Root: undefined;
+  Dashboard: undefined;
   NotFound: undefined;
 };
 
-export type BottomTabParamList = {
-  TabOne: undefined;
-  TabTwo: undefined;
+export enum CryptoType {
+  XRP = 'XRP',
+  ADA = 'ADA',
+  VET = 'VET',
+  XLM = 'XLM',
+  DOT = 'DOT',
+  ZAP = 'ZAP',
+  SHA = 'SHA',
+  HOT = 'HOT',
+  NPXS = 'NPXS',
+}
+
+export type Currency = {
+  type: CryptoType;
+  name: string;
 };
 
-export type TabOneParamList = {
-  TabOneScreen: undefined;
+export type Market = {
+  id: number;
+  name: string;
+  iconName: string;
 };
 
-export type TabTwoParamList = {
-  TabTwoScreen: undefined;
+export type Asset = {
+  id: number;
+  currency: CryptoType;
+  marketId: number;
+  amount: number;
 };
