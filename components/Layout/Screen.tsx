@@ -7,7 +7,9 @@ import { View, ViewProps } from './Themed';
 export default function Screen(props: ViewProps) {
   return (
     <View {...props} style={[[styles.screen, props.style]]}>
-      <SafeAreaView style={styles.screen}>{props.children}</SafeAreaView>
+      <SafeAreaView style={styles.screen}>
+        <View style={styles.container}>{props.children}</View>
+      </SafeAreaView>
     </View>
   );
 }
@@ -15,5 +17,9 @@ export default function Screen(props: ViewProps) {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
+  },
+  container: {
+    flex: 1,
+    paddingHorizontal: 20,
   },
 });

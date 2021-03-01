@@ -1,6 +1,9 @@
 export type RootStackParamList = {
   Dashboard: undefined;
   NotFound: undefined;
+  AssetForm: {
+    title: string;
+  };
 };
 
 export enum CryptoType {

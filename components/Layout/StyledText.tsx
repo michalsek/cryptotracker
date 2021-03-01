@@ -14,7 +14,6 @@ export default function MonoText(props: TextProps) {
 
 const styles = StyleSheet.create({
   text: {
-    fontFamily: 'Verdana',
     fontSize: 14,
   },
 });

@@ -7,9 +7,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 import { ColorSchemeName } from 'react-native';
 
-import NotFoundScreen from '../screens/NotFoundScreen';
-import DashboardScreen from '../screens/Dashboard';
 import { RootStackParamList } from '../types';
+import AssetForm from '../screens/AssetForm';
+import DashboardScreen from '../screens/Dashboard';
+import NotFoundScreen from '../screens/NotFoundScreen';
 import LinkingConfiguration from './LinkingConfiguration';
 
 // If you are not familiar with React Navigation, we recommend going through the
@@ -36,7 +37,18 @@ const Stack = createStackNavigator<RootStackParamList>();
 function RootNavigator() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Portfolio" component={DashboardScreen} />
+      <Stack.Screen
+        name="Dashboard"
+        component={DashboardScreen}
+        options={{ title: 'Portfolio' }}
+      />
+      <Stack.Screen
+        name="AssetForm"
+        component={AssetForm}
+        options={({ route }) => ({
+          title: route.params.title || 'Edit Asset',
+        })}
+      />
       <Stack.Screen
         name="NotFound"
         component={NotFoundScreen}
